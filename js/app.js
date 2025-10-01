@@ -68,7 +68,7 @@ function imprimirDatosAlumno() {
 
 //Ejercicio 3 _____________ 1 punto
 function mostrarProductos(array){
-
+    //recibe un array de productos y los muestra en el HTML
     let htmlProductos = "";
     array.forEach(p=>{ 
         htmlProductos += `
@@ -99,7 +99,6 @@ function filtrarProducto()
 
 function agregarACarrito(idproducto){
 
-    // alert(`Este libro tiene el id ${idLibro}`)
     carrito.push(productos.find(p => p.id == idproducto));
     mostrarCarrito();
     actualizarHeader();
@@ -141,6 +140,7 @@ function eliminarProducto(id){
 }
 
 function vaciarCarrito(){
+    //vaciar carrito por completo reseteando el array
     carrito = [];
     mostrarCarrito();
     actualizarTotal();
@@ -177,20 +177,15 @@ function vaciarCarritoLocalStorage()
 }
 
 
-
-function actualizarContador() {
-    let contadorCarrito = carrito.length;
-    const spanContador = document.getElementById("contador");
-    spanContador.textContent = contadorCarrito;
-}
-
-
 function actualizarTotal() {
+
+    //actualiza el total del carrito
     const total = carrito.reduce((acc, prod) => acc + Number(prod.precio), 0);
     document.getElementById("total-carrito").textContent = `Total: $${total}`;
 }
 
 function actualizarHeader() {
+    //sirve para actualizar el contador del carrito en el header
     const contador = document.getElementById("contador"); 
     contador.textContent = carrito.length;
 }
@@ -205,6 +200,7 @@ function ordenarPorNombre() {
 }
 
 function ordenarPorPrecio() {
+    //ordena de menor a mayor
     const productosOrdenados = productos.sort((a, b) => a.precio - b.precio);
 
     mostrarProductos(productosOrdenados);
