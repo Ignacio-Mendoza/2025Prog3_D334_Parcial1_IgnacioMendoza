@@ -8,7 +8,7 @@ let contadorCarrito = carrito.length;
 
 
 // Ejercicio 1 _____________ 0.5 puntos
-
+//armo lista con objetos productos
 const productos = [
   { id: 1, nombre: "Ananá", precio: 220, img: "img/anana.jpg" },
   { id: 2, nombre: "Arándano", precio: 300, img: "img/arandano.jpg" },
@@ -53,6 +53,7 @@ botonOrdenarPorPrecio.addEventListener("click", ordenarPorPrecio);
 
 //Ejercicio 2 _____________ 0.5 puntos
 function imprimirDatosAlumno() {
+    //creo el objeto alumno
   const alumno = {
     dni: "43318320",
     nombre: "Ignacio Martin",
@@ -61,7 +62,7 @@ function imprimirDatosAlumno() {
   document.getElementById(
     "nav-alumno"
   ).textContent = `${alumno.nombre} ${alumno.apellido}`;
-
+    // muestro en consola alumno
   const yo = `Alumno: ${alumno.nombre} ${alumno.apellido} - DNI: ${alumno.dni}`;
   console.log(yo);
 }
@@ -80,12 +81,14 @@ function mostrarProductos(array){
         </div>
         `
     })
+    //actualizo el HTML
     contenedorProductos.innerHTML = htmlProductos;
 }
 
 //Ejercicio 4 _____________ 1 punto
 function filtrarProducto()
 {
+    //filtro los productos por nombre gracias al imput de busqueda
     let valorBusqueda = barraBusqueda.value.toLowerCase();
 
     let productosFiltrados = productos.filter(p => {
@@ -98,7 +101,7 @@ function filtrarProducto()
 //Ejercicio 5 _____________ 2 puntos
 
 function agregarACarrito(idproducto){
-
+    //busca en la lista de productos el objeto que tenga el mismo id que pasamos por parametro y lo agrega al carrito
     carrito.push(productos.find(p => p.id == idproducto));
     mostrarCarrito();
     actualizarHeader();
@@ -132,6 +135,7 @@ function mostrarCarrito(){
 
 
 function eliminarProducto(id){
+    //elimina del carrito el producto que tenga el mismo id que pasamos por parametro y actualizamos
     carrito = carrito.filter(i=>i.id!==id);
     mostrarCarrito();
     actualizarHeader();
